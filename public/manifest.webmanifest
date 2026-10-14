@@ -1,0 +1,13 @@
+{
+  "name": "LightSense",
+  "short_name": "LightSense",
+  "description": "Camera settings and lens advice for the light you're in right now.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0e0f11",
+  "theme_color": "#0e0f11",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

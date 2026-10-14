@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="112" fill="#0e0f11"/>
+  <!-- six-blade aperture: each blade edge runs from the hexagonal opening out to the barrel -->
+  <g transform="translate(256 256)" fill="none" stroke="#f5a524" stroke-linecap="round" stroke-linejoin="round">
+    <circle r="150" stroke-width="22"/>
+    <path d="M53.7 -31.0L-94.4 -116.5 M53.7 31.0L53.7 -140.1 M0.0 62.0L148.1 -23.5 M-53.7 31.0L94.4 116.5 M-53.7 -31.0L-53.7 140.1 M0.0 -62.0L-148.1 23.5" stroke-width="16"/>
+  </g>
+</svg>

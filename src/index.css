@@ -1,0 +1,146 @@
+@import 'tailwindcss';
+
+/* Fonts are bundled (not fetched from a CDN) so the PWA renders correctly offline.
+   B612 was designed for aircraft cockpit displays: legible at a glance, in bad light. */
+@import '@fontsource/b612/400.css';
+@import '@fontsource/b612/700.css';
+@import '@fontsource/b612-mono/400.css';
+@import '@fontsource/b612-mono/700.css';
+
+/* Theme tokens. Three palettes:
+   day   — paper-white, near-black ink: the only thing readable in direct sun
+   dusk  — dark body, amber readouts (like a camera's top LCD backlight)
+   red   — pure red on black for astro: red light doesn't wreck dark adaptation */
+:root,
+[data-theme='day'] {
+  --bg: #f2efe8;
+  --surface: #fbfaf6;
+  --surface-2: #e8e4da;
+  --ink: #0d0d0c;
+  --muted: #55514a;
+  --line: #cfc9bd;
+  --accent: #b4530a;
+  --accent-ink: #ffffff;
+  --warn: #a1270f;
+  --ok: #2f6b3a;
+  color-scheme: light;
+}
+[data-theme='dusk'] {
+  --bg: #0d0e10;
+  --surface: #16181b;
+  --surface-2: #1f2226;
+  --ink: #f3f0e9;
+  --muted: #a29e95;
+  --line: #2c3035;
+  --accent: #f5a524;
+  --accent-ink: #120c00;
+  --warn: #ff7a59;
+  --ok: #7bc58a;
+  color-scheme: dark;
+}
+[data-theme='red'] {
+  --bg: #000000;
+  --surface: #0a0000;
+  --surface-2: #160302;
+  --ink: #ff4a3d;
+  --muted: #a3281f;
+  --line: #3d0b07;
+  --accent: #ff4a3d;
+  --accent-ink: #000000;
+  --warn: #ff4a3d;
+  --ok: #c2362b;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-warn: var(--warn);
+  --color-ok: var(--ok);
+  --font-sans: 'B612', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'B612 Mono', ui-monospace, monospace;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  margin: 0;
+  min-height: 100dvh;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Small-caps style labels used across cards, like the legends printed on a camera body. */
+.legend {
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Stop-scale range sliders: a tick track like an aperture ring. */
+input[type='range'].ring {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 2.25rem;
+  background: transparent;
+  cursor: pointer;
+}
+input[type='range'].ring::-webkit-slider-runnable-track {
+  height: 2px;
+  background: var(--line);
+}
+input[type='range'].ring::-moz-range-track {
+  height: 2px;
+  background: var(--line);
+}
+input[type='range'].ring::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-top: calc(-0.75rem + 1px);
+  border-radius: 999px;
+  background: var(--accent);
+  border: 3px solid var(--surface);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+input[type='range'].ring::-moz-range-thumb {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 999px;
+  background: var(--accent);
+  border: 3px solid var(--surface);
+}
+input[type='range'].ring:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+input[type='range'].ring:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Hide scrollbar on the horizontal scene strip; it still scrolls by touch/trackpad. */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
